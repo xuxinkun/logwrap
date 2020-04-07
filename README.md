@@ -16,7 +16,8 @@ Logwrap provides many env params as follows.
 | LOGWRAP_LOGROTATE_CYCLE  | cycle param of logrotate configuration, must be either of daily, weekly, monthly or yearly. | weekly                     |
 | LOGWRAP_LOGROTATE_SIZE   | minsize param of logroate configuration.                     | 100M                       |
 | LOGWRAP_COMMAND          | command wanted to exec.                                      | $1                         |
-| LOGWRAP_FILE             | the path of logfile.                                         | /home/$LOGWRAP_COMMAND.log |
+| LOGWRAP_DIR              | the dir of logfile. If the LOGWRAP_DIR is set, LOGWRAP_FILE will be $LOGWRAP_DIR/$LOGWRAP_COMMAND.log | ""                         |
+| LOGWRAP_FILE             | the path of logfile. If the LOGWRAP_DIR is not set, the LOGWRAP_FILE must be set or just use the default value. | /home/$LOGWRAP_COMMAND.log |
 
 
 # usage

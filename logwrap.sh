@@ -8,6 +8,7 @@ LOGWRAP_LOGROTATE_SIZE=${LOGWRAP_LOGROTATE_SIZE:=100M}
 LOGWRAP_COMMAND=${LOGWRAP_COMMAND:=$1}
 LOGWRAP_WHOLECOMMAND=${LOGWRAP_WHOLECOMMAND:=$@}
 LOGWRAP_FILE=${LOGWRAP_FILE:=/home/$LOGWRAP_COMMAND.log}
+LOGWRAP_DIR=${LOGWRAP_DIR: }
 
 
 function gen_logroate_file() {
@@ -38,10 +39,14 @@ cat ${LOGWRAP_LOGROATE_FILE}
 }
 
 function ensure_file_dir() {
+    if [[ "${LOGWRAP_DIR}" == "" ]]; then
+        LOGWRAP_DIR=`dirname ${LOGWRAP_FILE}`
+    else
+        LOGWRAP_FILE=${LOGWRAP_DIR}/${LOGWRAP_COMMAND}.log
+    fi
     echo "LOGWRAP will direct stdout to" ${LOGWRAP_FILE}
-    LOG_DIR=`dirname ${LOGWRAP_FILE}`
-    echo "LOGWRAP ensure log dir" ${LOG_DIR}
-    mkdir -p $LOG_DIR
+    echo "LOGWRAP ensure log dir" ${LOGWRAP_DIR}
+    mkdir -p ${LOGWRAP_DIR}
 }
 
 function start_command() {
