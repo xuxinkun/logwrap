@@ -28,9 +28,29 @@ Logwrap provides many env params as follows.
 The example Dockerfile is provided in the project. And the entrypoint is set to `/logwrap.sh`. If the command `echo hello world` wants to be executed. Just execute as follows.
 
 ```
-[root@localhost logwrap]# docker build -t logwrap .
-[root@localhost logwrap]# docker run -it -v /home:/home -d logwrap echo hello world
-bcb519361ada5f4d0872d73281e775407bfa88bac9005a6429b94f236b7b9e49
+[root@localhost logwrap]# docker build -t logwrap:base .
+[root@localhost logwrap]# docker run -it --rm -v /home:/home logwrap:base echo hello world
+LOGWRAP will direct stdout to  /home/echo.log
+LOGWRAP ensure log dir  /home
+LOGWRAP enable logrotate.
+LOGWRAP start crond.
+LOGWRAP generate logrotate file.
+LOGWRAP_COMMAND is  echo
+LOGROATE_FILE is /etc/logrotate.d/echo
+/etc/logrotate.d/echo does not exist. Generate it.
+    /home/echo.log {
+            daily
+            missingok
+            rotate 4
+            compress
+            delaycompress
+            dateext
+            dateformat %Y-%m-%d-%s
+            copytruncate
+            size 100M
+    }
+exec command: echo hello world
+--------------------
 [root@localhost logwrap]# cat /home/echo.log 
 hello world
 ```

@@ -11,9 +11,9 @@ LOGWRAP_FILE=${LOGWRAP_FILE:=/home/$LOGWRAP_COMMAND.log}
 
 
 function gen_logroate_file() {
-    echo "LOGWRAP_COMMAND is " ${LOGWRAP_COMMAND}
+    echo "LOGWRAP_COMMAND is" ${LOGWRAP_COMMAND}
     LOGWRAP_LOGROATE_FILE="/etc/logrotate.d/$LOGWRAP_COMMAND"
-    echo "LOGROATE_FILE is "${LOGWRAP_LOGROATE_FILE}
+    echo "LOGROATE_FILE is" ${LOGWRAP_LOGROATE_FILE}
     if [[ ! -f "$LOGWRAP_LOGROATE_FILE" ]];then
     echo ${LOGWRAP_LOGROATE_FILE} "does not exist. Generate it."
 
@@ -38,9 +38,9 @@ cat ${LOGWRAP_LOGROATE_FILE}
 }
 
 function ensure_file_dir() {
-    echo "LOGWRAP will direct stdout to " ${LOGWRAP_FILE}
+    echo "LOGWRAP will direct stdout to" ${LOGWRAP_FILE}
     LOG_DIR=`dirname ${LOGWRAP_FILE}`
-    echo "LOGWRAP ensure log dir " ${LOG_DIR}
+    echo "LOGWRAP ensure log dir" ${LOG_DIR}
     mkdir -p $LOG_DIR
 }
 
