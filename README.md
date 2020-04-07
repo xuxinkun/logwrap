@@ -13,10 +13,10 @@ Logwrap provides many env params as follows.
 | LOGWRAP_ENABLE_STDERR    | whether direct stderr to the log file.                       | true                       |
 | LOGWRAP_ENABLE_LOGROTATE | whether enable logrotate feature.                            | true                       |
 | LOGWRAP_LOGROTATE_ROTATE | rotate param of logrotate configuration.                     | 4                          |
-| LOGWRAP_LOGROTATE_CYCLE  | cycle param of logrotate configuration, must be either of daily, weekly. | daily                      |
+| LOGWRAP_LOGROTATE_CYCLE  | cycle param of logrotate configuration, must be either of daily, weekly, monthly or yearly. | weekly                     |
 | LOGWRAP_LOGROTATE_SIZE   | minsize param of logroate configuration.                     | 100M                       |
 | LOGWRAP_COMMAND          | command wanted to exec.                                      | $1                         |
-| LOGWRAP_FILE             | the logfile location.                                        | /home/$LOGWRAP_COMMAND.log |
+| LOGWRAP_FILE             | the path of logfile.                                         | /home/$LOGWRAP_COMMAND.log |
 
 
 # usage
